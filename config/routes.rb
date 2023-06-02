@@ -1,6 +1,25 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
   namespace :public do
+    get 'users/show'
+    get 'users/edit'
+  end
+  namespace :admin do
+    get 'homes/top'
+    get 'homes/about'
+  end
+  namespace :public do
+    get 'users/show'
+    get 'users/index'
+    get 'users/edit'
+  end
+  namespace :public do
+    root to: 'homes#top'
     get 'homes/top'
     get 'homes/about'
   end
