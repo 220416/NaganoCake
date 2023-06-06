@@ -4,7 +4,13 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   def create
-
+    @customer = Customer.new(customer_params)
+    @customer.user_id = current_user.id
+    if @customer.save
+      redirect_to public_users_show_path(@customer.id)
+    else
+      render :new
+    end
   end
 
   # GET /resource/sign_in
@@ -28,7 +34,10 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
+  private
+  def customer_oarams
+    params.require(:customer).permit(:first_name, :last_name, :postal_code, :address, :is_deleted)
+  end
 
 before_action :customer_state, only: [:create]
 protected
@@ -44,7 +53,7 @@ def customer_state
   # createアクションの実行
   else
     redirect_to new_customer_registration_path
-
   end
 end
+
 end
