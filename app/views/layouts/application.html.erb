@@ -18,26 +18,32 @@
           <div>
             <ul>
               <li>
-                <% link_to root_path %>
-                <!--<i class="fas fa-home"></i>-->
-                About
-              </li>
-              <li>
-                <% link_to root_path %>
+                <%= link_to admin_items_path do %>
                 <!--<i class="fas fa-home"></i>-->
                 商品一覧
+                <% end %>
               </li>
               <li>
-                <% link_to root_path %>
+                <%= link_to new_admin_item_path do %>
                 <!--<i class="fas fa-home"></i>-->
                 新規登録
+                <% end %>
               </li>
               <li>
-                <% link_to root_path %>
+                <%= link_to root_path do %>
                 <!--<i class="fas fa-home"></i>-->
-                ログイン
+                注文履歴一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_admin_session_path do %>
+                <!--<i class="fas fa-home"></i>-->
+                ログアウト
+                <% end %>
               </li>
             </ul>
+            
+            
           </div>
         </div>
       </nav>
