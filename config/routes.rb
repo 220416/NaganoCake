@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
     get 'homes/about'
-    resources :items, except:[:destroy]
+    resources :items
     resources :customers, only:[:index, :show, :edit, :update]
   end
 

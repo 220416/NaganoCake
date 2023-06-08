@@ -15,6 +15,8 @@
       <nav>
         <div>
           LOGO
+          <!--管理者用ヘッダ-->
+          <% if admin_signed_in? %>
           <div>
             <ul>
               <li>
@@ -36,15 +38,83 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_admin_session_path do %>
+                <%= link_to destroy_admin_session_path, method: :delete do %>
                 <!--<i class="fas fa-home"></i>-->
                 ログアウト
                 <% end %>
               </li>
             </ul>
-            
-            
           </div>
+
+          <!--顧客用ヘッダ-->
+          <% elsif customer_signed_in? %>
+          <div>
+            <ul>
+              <li>
+                <%= link_to customer_path do %>
+                <!--<i class="fas fa-home"></i>-->
+                マイページ
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to items_path do %>
+                <!--<i class="fas fa-home"></i>-->
+                商品一覧
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to root_path do %>
+                <!--<i class="fas fa-home"></i>-->
+                カート
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to destroy_customer_session_path(resource_name) do %>
+                <!--<i class="fas fa-home"></i>-->
+                ログアウト
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <!--ログイン前-->
+          <% else %>
+          <div>
+            <ul>
+              <li>
+                <%= link_to homes_about_path do %>
+                <!--<i class="fas fa-home"></i>-->
+                About
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to items_path do %>
+                <!--<i class="fas fa-home"></i>-->
+                商品一覧
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to new_customer_registration_path do %>
+                <!--<i class="fas fa-home"></i>-->
+                新規登録
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to new_customer_session_path do %>
+                <!--<i class="fas fa-home"></i>-->
+                ログイン
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <% end %>
+
         </div>
       </nav>
     </header>
