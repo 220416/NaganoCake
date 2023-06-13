@@ -1,2 +1,17 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+
+  <div class="col-md-8 offset-md-1">
+    <h2>商品詳細</h2>
+    <table class="table">
+    <tbody>
+      <tr>
+        <td><%= @item.image %></td>
+        <br>
+        <td><%= @item.name %></td>
+        <td><%= @item.introduction %></td>
+        <td><%= @item.price %></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+
+<p>カートに入れる</p>

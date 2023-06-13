@@ -1,2 +1,23 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+
+  <div class="col-md-8 offset-md-1">
+    <h2>商品詳細</h2>
+    <table class="table">
+    <tbody>
+      <tr>
+        <td>
+        <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "200x200" %>
+        <% else %>
+        <%= image_tag 'noimage', size: "200x200" %>
+        <% end %>
+        </td>
+        <td><%= @item.name %></td>
+        <td><%= @item.introduction %></td>
+        <td><%= @item.price %></td>
+      </tr>
+    </tbody>
+    </table>
+
+    <p><%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-sm btn-success" %></p>
+    <p><%= link_to  "削除する", admin_item_path, method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></p>
+  </div>
