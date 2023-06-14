@@ -4,7 +4,12 @@
     <table class="table">
     <tbody>
       <tr>
-        <td><%= @item.image %></td>
+        <td>
+        <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "100x100" %>
+        <% else %>
+        <%= image_tag 'noimage', size: "100x100" %>
+        <% end %>
         <br>
         <td><%= @item.name %></td>
         <td><%= @item.introduction %></td>

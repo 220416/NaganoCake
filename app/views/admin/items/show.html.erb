@@ -6,9 +6,9 @@
       <tr>
         <td>
         <% if @item.image.attached? %>
-        <%= image_tag @item.image, size: "200x200" %>
+        <%= image_tag @item.image, size: "100x100" %>
         <% else %>
-        <%= image_tag 'noimage', size: "200x200" %>
+        <%= image_tag 'noimage', size: "100x100" %>
         <% end %>
         </td>
         <td><%= @item.name %></td>

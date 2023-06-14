@@ -5,7 +5,7 @@ class Public::SessionsController < Devise::SessionsController
 
   def create
     @customer = Customer.new(customer_params)
-    @customer.user_id = current_user.id
+    @customer.id = current_customer.id
     if @customer.save
       redirect_to public_users_show_path(@customer.id)
     else
@@ -35,7 +35,7 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   private
-  def customer_oarams
+  def customer_params
     params.require(:customer).permit(:first_name, :last_name, :postal_code, :address, :is_deleted)
   end
 

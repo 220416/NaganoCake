@@ -32,6 +32,11 @@
             <% end %>
         </tbody>
         </table>
+
+        <%= link_to new_admin_item_path do %>
+        新規登録
+        <% end %>
+        
         <%= paginate @items %>
       </div>
     </div>
