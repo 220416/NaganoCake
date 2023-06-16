@@ -8,5 +8,5 @@ class CreateCartItems < ActiveRecord::Migration[6.1]
     end
     add_foreign_key :cart_items, :items, column: :item_id
     add_foreign_key :cart_items, :customers, column: :customer_id
-  end
+    end
 end

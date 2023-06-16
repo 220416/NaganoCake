@@ -1,0 +1,22 @@
+
+<div>
+  <div>
+  <h2>ショッピングカート</h2>
+    <table class="table">
+    <tbody>
+      <tr>
+        <td>
+        <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "100x100" %>
+        <% else %>
+        <%= image_tag 'noimage', size: "100x100" %>
+        <% end %>
+        </td>
+        <td><%= @item.name %></td>
+        <td><%= @item.introduction %></td>
+        <td><%= @item.price %></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
