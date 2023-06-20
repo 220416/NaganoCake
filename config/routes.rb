@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'homes/about'
+    get 'customers' => 'customers#show'
     resources :items, only:[:index, :show]
-    resources :customers, only:[:show, :edit, :update, :confirm_withdraw, :withdraw]
+    resources :customers, only:[:edit, :update, :confirm_withdraw, :withdraw]
     resources :cart_items, only:[:index, :show, :create]
+    
   end
 
   # 管理者用

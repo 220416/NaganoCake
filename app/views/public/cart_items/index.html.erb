@@ -2,21 +2,31 @@
 <div>
   <div>
   <h2>ショッピングカート</h2>
+
     <table class="table">
-    <tbody>
-      <tr>
-        <td>
-        <% if @item.image.attached? %>
-        <%= image_tag @item.image, size: "100x100" %>
-        <% else %>
-        <%= image_tag 'noimage', size: "100x100" %>
-        <% end %>
-        </td>
-        <td><%= @item.name %></td>
-        <td><%= @item.introduction %></td>
-        <td><%= @item.price %></td>
-      </tr>
-    </tbody>
-    </table>
+      <thead>
+        <tr>
+        <th></th>
+        <th>商品名</th>
+        <th>単価（税込み）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>　　</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+        <td></td>
+        <td><%= cart_item.item.name %></td>
+        <td><%= cart_item.item.price %></td>
+        <td><%= cart_item.amount %></td>
+        </tr>
+      <% end %>
+      </tbody>
+      </table>
+      <div>
+        合計金額
+      </div>
   </div>
 </div>

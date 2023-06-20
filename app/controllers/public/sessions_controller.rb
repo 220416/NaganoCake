@@ -3,15 +3,15 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  def create
-    @customer = Customer.new(customer_params)
-    @customer.id = current_customer.id
-    if @customer.save
-      redirect_to public_users_show_path(@customer.id)
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @customer = Customer.new(customer_params)
+  #   @customer.id = current_customer.id
+  #   if @customer.save
+  #     redirect_to public_users_show_path(@customer.id)
+  #   else
+  #     render :new
+  #   end
+  # end
 
   # GET /resource/sign_in
   # def new
