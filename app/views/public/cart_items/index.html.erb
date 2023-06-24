@@ -12,6 +12,7 @@
         <th>数量</th>
         <th>小計</th>
         <th>　　</th>
+        <th><%= link_to "カートを空にする",  cart_items_destroy_all_path, method: :delete %></th>
         </tr>
       </thead>
       <tbody>
@@ -20,16 +21,25 @@
         <td></td>
         <td><%= cart_item.item.name %></td>
         <td><%= cart_item.item.with_tax_price %></td>
-        <td><%= cart_item.amount %></td>
-        <td><%= cart_item.item.subtotal %></td>
+        <td>
+        <%= form_with model: cart_item, url: cart_items_path do |f| %>
+        <%= f.select :amount, *[1..5] %>
+        <%= f.submit "変更",class:"btn-success" %>
+        <% @total += cart_item.subtotal %>
+        <% end %>
+        </td>
+        <td><%= cart_item.subtotal %></td>
+        <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete %></td>
         <td></td>
-        <td>合計金額<%= @total += cart_item.subtotal %></td>
         </tr>
       <% end %>
       </tbody>
       </table>
+      合計金額<%= @total %>
       <div>
-
+        <%= link_to "買い物を続ける", items_path %>
+        <br>
+        <%= link_to "情報入力に進む", root_path %>
       </div>
   </div>
 </div>
