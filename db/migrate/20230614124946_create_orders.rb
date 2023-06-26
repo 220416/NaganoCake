@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :payment_method, null:false
       t.string :postal_code, null:false
       t.string :address, null:false
-      t.string :attemtion, null:false
+      t.string :name, null:false
       t.timestamps
   end
     add_foreign_key :orders, :customers, column: :customer_id

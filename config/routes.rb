@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/create'
-    get 'orders/confirm'
-    get 'orders/thanks'
-  end
   # 顧客用
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -18,12 +10,21 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'homes/about'
+    # Customers
     get 'customers' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
     patch 'customers' => 'customers#update'
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch 'customers/withdraw' => 'customer#withdraw'
+    # CartItems
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    # Orders
+    get 'orders/new' => 'orders#new'
+    get 'orders/index' => 'orders#index'
+    post 'orders/show' => 'orders#show'
+    get 'orders/create' => 'orders#create'
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanks' => 'orders#thanks'
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :show, :create, :destroy]
 

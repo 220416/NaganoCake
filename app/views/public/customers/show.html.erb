@@ -1,18 +1,19 @@
   <h2>
-    <%= @customer.last_name %> <%= @customer.first_name %>
+    <%= current_customer.last_name %> <%= current_customer.first_name %>
     さんの会員詳細
   </h2>
   <div class="row">
-      会員ID <%= @customer.id %><br>
-      氏名 <%= @customer.last_name %> <%= @customer.first_name %><br>
-      フリガナ <%= @customer.last_name_kana %> <%= @customer.first_name_kana %><br>
-      郵便番号 <%= @customer.postal_code %><br>
-      電話番号 <%= @customer.telephone_number %><br>
-      メールアドレス <%= @customer.email %><br>
-      会員ステータス <%= @customer.is_deleted %><br>
+      会員ID <%= current_customer.id %><br>
+      氏名 <%= current_customer.last_name %> <%= current_customer.first_name %><br>
+      フリガナ <%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %><br>
+      郵便番号 <%= current_customer.postal_code %><br>
+      住所 <%= current_customer.address %><br>
+      電話番号 <%= current_customer.telephone_number %><br>
+      メールアドレス <%= current_customer.email %><br>
+      会員ステータス <%= current_customer.is_deleted %><br>
   </div>
   <div class="row">
-    <%= link_to edit_admin_customer_path(@customer.id), class:"btn btn-outline-secondary btn-block" do %>
+    <%= link_to edit_admin_customer_path(current_customer), class:"btn btn-outline-secondary btn-block" do %>
     編集する
     <% end %>
   </div>
