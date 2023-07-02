@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'orders/new' => 'orders#new'
     get 'orders/index' => 'orders#index'
     post 'orders/show' => 'orders#show'
-    get 'orders/create' => 'orders#create'
+    post 'orders/create' => 'orders#create'
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
     resources :items, only:[:index, :show]
@@ -37,10 +37,12 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
-    get 'homes/top'
+    root to: 'homes#top'
     get 'homes/about'
+    resources :orders, only:[:show]
     resources :items
     resources :customers, only:[:index, :show, :edit, :update]
+    
   end
 
 

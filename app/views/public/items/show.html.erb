@@ -9,11 +9,11 @@
       <% end %>
       <br>
       <p><%= @item.introduction %></p>
-      <p>￥<%= @item.price %>（税込）</p>
+      <p>￥<%= @item.price %>（税抜）</p>
 
       <%= form_with url: cart_items_path, model: @cart_item do |f| %>
       <%= f.select :amount, *[1..5] %>
       <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.submit "カートに入れる",class:"btn-success" %>
+      <%= f.submit "カートに入れる", class:"btn-success" %>
       <% end %>
   </div>
