@@ -13,7 +13,7 @@
       会員ステータス <%= current_customer.is_deleted %><br>
   </div>
   <div class="row">
-    <%= link_to edit_admin_customer_path(current_customer), class:"btn btn-outline-secondary btn-block" do %>
+    <%= link_to customers_edit_path, class:"btn btn-outline-secondary btn-block" do %>
     編集する
     <% end %>
   </div>
