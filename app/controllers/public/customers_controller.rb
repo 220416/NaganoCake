@@ -8,13 +8,16 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    
   end
 
   def confirm_withdraw
   end
 
   def withdraw
+    @customer.is_deleted = current_customer.is_deleted
+    @customer.is_deleted = true
+    @customer.update(is_deleted:@customer.is_deleted)
+    redirect_to roor_path
   end
 
   private
