@@ -4,9 +4,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @customer = current_customer
+    @orders = Order.all
   end
 
   def show
+    @order = Order.find(params[:id])
+    @subtotal = 0
+    @total = 0
   end
 
   def confirm

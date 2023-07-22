@@ -1,9 +1,14 @@
-  <h2>
-    <%= current_customer.last_name %> <%= current_customer.first_name %>
-    さんの会員詳細
-  </h2>
+  <h2>マイページ</h2>
   <div class="row">
-      会員ID <%= current_customer.id %><br>
+    <div class="col">
+    登録情報
+    <%= link_to customers_edit_path, class:"btn btn-success" do %>
+    編集する
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       氏名 <%= current_customer.last_name %> <%= current_customer.first_name %><br>
       フリガナ <%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %><br>
       郵便番号 <%= current_customer.postal_code %><br>
@@ -11,14 +16,13 @@
       電話番号 <%= current_customer.telephone_number %><br>
       メールアドレス <%= current_customer.email %><br>
       会員ステータス <%= current_customer.is_deleted %><br>
+      </div>
   </div>
   <div class="row">
-    <%= link_to customers_edit_path, class:"btn btn-outline-secondary btn-block" do %>
-    編集する
+    <div class="col">
+    注文履歴
+    <%= link_to orders_path, class:"btn btn-primary" do %>
+    一覧を見る
     <% end %>
-  </div>
-  <div class="row">
-      <%= link_to root_path, class:"btn btn-outline-secondary btn-block" do %>
-    注文履歴一覧を見る(rootパス)
-    <% end %>
+    </div>
   </div>

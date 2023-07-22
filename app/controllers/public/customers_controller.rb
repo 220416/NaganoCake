@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   def show
-
+    
   end
 
   def edit
@@ -8,20 +8,23 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
+    @customer = current_customer
+    @customer.update(customer_params)
+    redirect_to customers_path
   end
 
   def confirm_withdraw
   end
 
   def withdraw
-    @customer.is_deleted = current_customer.is_deleted
-    @customer.is_deleted = true
-    @customer.update(is_deleted:@customer.is_deleted)
-    redirect_to roor_path
+    @customer = current_customer
+    @customer.update(is_deleted:true)
+    reset_session
+    redirect_to root_path
   end
 
   private
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :postal_code, :address, :telephone_number, :email)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
   end
 end

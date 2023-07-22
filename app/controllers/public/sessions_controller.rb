@@ -13,6 +13,10 @@ class Public::SessionsController < Devise::SessionsController
   #   end
   # end
 
+  def after_sign_up_path_for(resource)
+    customers_path
+  end
+
   # GET /resource/sign_in
   # def new
   #   super

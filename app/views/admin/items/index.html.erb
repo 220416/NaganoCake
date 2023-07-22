@@ -11,8 +11,7 @@
             <th></th>
             <th>商品ID</th>
             <th>商品名</th>
-            <th>商品説明</th>
-            <th>販売価格</th>
+            <th>税抜価格</th>
             <th colspan="3"></th>
             </tr>
           </thead>
@@ -26,7 +25,6 @@
               <%= item.name %>
               <% end %>
             </td>
-            <td><%= item.introduction %></td>
             <td><%= item.price %></td>
             </tr>
             <% end %>
@@ -36,7 +34,7 @@
         <%= link_to new_admin_item_path do %>
         新規登録
         <% end %>
-        
+
         <%= paginate @items %>
       </div>
     </div>

@@ -12,18 +12,15 @@ Rails.application.routes.draw do
     get 'customers/edit' => 'customers#edit'
     patch 'customers' => 'customers#update'
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
-    patch 'customers/withdraw' => 'customer#withdraw'
+    patch 'customers/withdraw' => 'customers#withdraw'
     # CartItems
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     # Orders
-    get 'orders/new' => 'orders#new'
-    get 'orders/index' => 'orders#index'
-    post 'orders/show' => 'orders#show'
-    post 'orders/create' => 'orders#create'
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
+    resources :orders, only:[:new, :index, :show, :create]
     resources :items, only:[:index, :show]
-    resources :cart_items, only:[:index, :show, :create, :destroy]
+    resources :cart_items, only:[:index, :show, :create, :update, :destroy]
 
     devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",

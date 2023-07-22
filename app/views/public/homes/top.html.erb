@@ -5,6 +5,31 @@
     会員出ない方も商品の閲覧はできますが、<br>
     購入には会員登録が必要になります。
   </p>
+  <h2>新着商品</h2>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-8 offset-md-1">
+            <% @items.each do |item| %>
+              <% if item.image.attached? %>
+                <%= link_to item_path(item.id) do %>
+                <%= image_tag item.image, size: "100x100" %><br>
+                <% end %>
+              <% else %>
+                <%= link_to item_path(item.id) do %>
+                <%= image_tag 'noimage', size: "100x100" %><br>
+                <% end %>
+            <% end %>
+            <%= link_to item_path(item.id) do %>
+              <%= item.name %><br>
+            <% end %>
+            <%= item.price %><br>
+            <% end %>
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
     <%= link_to items_path do %>
     全ての商品を見る
     <% end %>
