@@ -9,51 +9,33 @@
   </head>
 
   <body>
-    <header>
-      <nav>
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-white">
         <div class="container">
-          <div class="row">
-
-          <b>LOGO</b>
+          <div class="nav navbar-brand p-1">
+          <%= link_to "LOGO", root_path %>
           <div class="col">
           <!--管理者用ヘッダ-->
           <% if admin_signed_in? %>
-
-            <%= link_to admin_items_path do %>
-            <!--<i class="fas fa-home"></i>-->
-            商品一覧
-            <% end %>
-            <%= link_to admin_customers_path do %>
-            会員一覧
-            <% end %>
-            <%= link_to admin_root_path do %>
-            注文履歴一覧
-            <% end %>
-
-            <%= link_to destroy_admin_session_path, method: :delete do %>
-            ログアウト
-            <% end %>
+            <%= link_to "商品一覧", admin_items_path %>
+            <%= link_to "会員一覧", admin_customers_path %>
+            <%= link_to "注文履歴一覧", admin_root_path %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </div>
 
           <!--顧客用ヘッダ-->
           <% elsif customer_signed_in? %>
-          <div class="col">
-            <%= link_to customers_path do %>
-            マイページ
-            <% end %>
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+            <%= link_to "マイページ", customers_path, class:"nav justify-content-end" %></li>
+            <li class="nav-item">
+            <%= link_to "商品一覧", items_path %>
+            <li class="nav-item">
+            <%= link_to "カート", cart_items_path %>
+            <li class="nav-item">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
 
-            <%= link_to items_path do %>
-            商品一覧
-            <% end %>
-
-            <%= link_to cart_items_path do %>
-            カート
-            <% end %>
-
-            <%= link_to destroy_customer_session_path, method: :delete do %>
-            ログアウト
-            <% end %>
-          </div>
+          </ul>
 
           <!--ログイン前-->
           <% else %>
