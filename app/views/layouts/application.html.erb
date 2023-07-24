@@ -9,61 +9,47 @@
   </head>
 
   <body>
-    <header class="shadow-sm">
+    <header>
       <nav class="navbar navbar-expand-lg navbar-white">
-        <div class="container">
-          <div class="nav navbar-brand p-1">
-          <%= link_to "LOGO", root_path %>
-          <div class="col">
+        <ul class="nav">
+          <li class="nav-item">
+          <%= link_to "LOGO", root_path, class:"nav navbar-brand p-1 btn btn-light" %></li>
           <!--管理者用ヘッダ-->
           <% if admin_signed_in? %>
-            <%= link_to "商品一覧", admin_items_path %>
-            <%= link_to "会員一覧", admin_customers_path %>
-            <%= link_to "注文履歴一覧", admin_root_path %>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-          </div>
+            <li class="nav-item btn btn-light">
+            <%= link_to "商品一覧", admin_items_path %></li>
+            <li class="nav-item">
+            <%= link_to "会員一覧", admin_customers_path %></li>
+            <li class="nav-item">
+            <%= link_to "注文履歴一覧", admin_root_path %></li>
+            <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
 
           <!--顧客用ヘッダ-->
           <% elsif customer_signed_in? %>
-          <ul class="nav justify-content-center">
+          <ul class="nav ml-auto">
             <li class="nav-item">
-            <%= link_to "マイページ", customers_path, class:"nav justify-content-end" %></li>
+            <%= link_to "マイページ", customers_path, class:"nav justify-content-end btn btn-light" %></li>
             <li class="nav-item">
-            <%= link_to "商品一覧", items_path %>
+            <%= link_to "商品一覧", items_path, class:"nav justify-content-end btn btn-light" %></li>
             <li class="nav-item">
-            <%= link_to "カート", cart_items_path %>
+            <%= link_to "カート", cart_items_path, class:"nav justify-content-end btn btn-light" %></li>
             <li class="nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
-
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav justify-content-end btn btn-light" %></li>
           </ul>
 
           <!--ログイン前-->
           <% else %>
-          <div class="col">
-            <%= link_to homes_about_path do %>
-            <!--<i class="fas fa-home"></i>-->
-            About
-            <% end %>
-
-            <%= link_to items_path do %>
-            <!--<i class="fas fa-home"></i>-->
-            商品一覧
-            <% end %>
-
-            <%= link_to new_customer_registration_path do %>
-            <!--<i class="fas fa-home"></i>-->
-            新規登録
-            <% end %>
-
-            <%= link_to new_customer_session_path do %>
-            <!--<i class="fas fa-home"></i>-->
-            ログイン
-            <% end %>
-          </div>
+            <li class="nav-item">
+            <%= link_to "About", homes_about_path %></li>
+            <li class="nav-item">
+            <%= link_to "商品一覧", items_path %></li>
+            <li class="nav-item">
+            <%= link_to "新規登録", new_customer_registration_path %></li>
+            <li class="nav-item">
+            <%= link_to "ログイン", new_customer_session_path %></li>
           <% end %>
-
-        </div>
-        </div>
+        </ul>
       </nav>
     </header>
     <%= yield %>
