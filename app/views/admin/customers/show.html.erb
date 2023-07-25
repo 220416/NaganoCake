@@ -2,7 +2,7 @@
     <%= @customer.last_name %> <%= @customer.first_name %>
     さんの会員詳細
   </h2>
-  <div class="row">
+  <div>
       会員ID <%= @customer.id %><br>
       氏名 <%= @customer.last_name %> <%= @customer.first_name %><br>
       フリガナ <%= @customer.last_name_kana %> <%= @customer.first_name_kana %><br>
@@ -11,13 +11,13 @@
       メールアドレス <%= @customer.email %><br>
       会員ステータス <%= @customer.is_deleted %><br>
   </div>
-  <div class="row">
-    <%= link_to edit_admin_customer_path(@customer.id), class:"btn btn-outline-secondary btn-block" do %>
+  <div>
+    <%= link_to edit_admin_customer_path(@customer.id), class:"btn btn-outline-secondary" do %>
     編集する
     <% end %>
   </div>
-  <div class="row">
-      <%= link_to root_path, class:"btn btn-outline-secondary btn-block" do %>
-    注文履歴一覧を見る(rootパス)
+  <div>
+      <%= link_to admin_orders_path(@customer), class:"btn btn-outline-secondary" do %>
+    注文履歴一覧を見る
     <% end %>
   </div>

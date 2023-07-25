@@ -1,0 +1,48 @@
+<h2>注文履歴一覧</h2>
+<table>
+  <thead>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th>注文詳細</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+    <% @customer.orders.each do |order| %>
+    <tr>
+      <!--１．注文日-->
+      <th>
+        <%= link_to root_path do %>
+        <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+        <% end %>
+      </th>
+      <!--２．配送先-->
+      <th>
+        <%= order.customer.address %>
+      </th>
+      <!--３．注文商品-->
+      <th>
+      <% order.order_details.each do |detail| %>
+      <%= detail.item.name %><br>
+      <% end %>
+      <br>
+      </th>
+      <!--４．支払金額-->
+      <th>
+        <%= order.total_amount %>
+      </th>
+      <!--５．注文詳細-->
+      <th>
+      <%= link_to order_path(order),class:"btn btn-primary" do %>
+      表示する
+      <% end %>
+      </th>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

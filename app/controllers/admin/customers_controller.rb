@@ -5,6 +5,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @order = Order.all
   end
 
   def edit
